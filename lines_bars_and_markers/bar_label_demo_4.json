@@ -1,0 +1,36 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "A simple bar chart with embedded data.",
+  "data": {
+    "values": [
+      {"fruit_names": "Coffee", "fruit_counts": 4000},
+      {"fruit_names": "Salted Caramel", "fruit_counts": 2000},
+      {"fruit_names": "Pistachio", "fruit_counts": 7000}
+    ]
+  },
+  "height": 200,
+  "width": 300,
+  "title": "Gelato sales by flavor",
+  "encoding": {
+    "y": {
+      "field": "fruit_counts",
+      "type": "quantitative",
+      "title": null,
+      "scale": {"domain": [0, 8000]}
+    },
+    "x": {
+      "field": "fruit_names",
+      "type": "nominal",
+      "title": null,
+      "axis": {"labelAngle": 0}
+    }
+  },
+  "layer": [
+    {"mark": "bar"},
+    {
+      "mark": {"type": "text", "baseline": "bottom"},
+      "encoding": {"text": {"field": "fruit_counts"}}
+    }
+  ],
+  "config": {}
+}

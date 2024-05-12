@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/vega@5.29.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.18.1"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.24.0"></script>
+</head>
+<body>
+  <div id="vis"/>
+  <script>
+    const spec = {
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "A simple bar chart with embedded data.",
+  "data": {
+    "values": [
+      {"animal_names": "Lion", "mph_speed": 50},
+      {"animal_names": "Gazelle", "mph_speed": 60},
+      {"animal_names": "Cheetah", "mph_speed": 75}
+    ]
+  },
+  "height": 200,
+  "width": 300,
+  "title": "Gelato sales by flavor",
+  "transform": [{"calculate": "datum.mph_speed * 1.6", "as": "kmh"}],
+  "encoding": {
+    "y": {"field": "kmh", "type": "quantitative", "title": null},
+    "x": {
+      "field": "animal_names",
+      "type": "nominal",
+      "title": null,
+      "axis": {"labelAngle": 0}
+    }
+  },
+  "layer": [
+    {"mark": "bar"},
+    {
+      "mark": {"type": "text", "baseline": "bottom"},
+      "encoding": {"text": {"field": "kmh", "format": ".2f"}}
+    }
+  ],
+  "config": {}
+};
+    vegaEmbed("#vis", spec, {mode: "vega-lite"}).then(console.log).catch(console.warn);
+  </script>
+</body>
+</html>

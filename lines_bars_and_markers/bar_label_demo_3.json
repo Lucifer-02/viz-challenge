@@ -1,0 +1,50 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "A simple bar chart with embedded data.",
+  "data": {
+    "values": [
+      {"people": "Tom", "performance": 12.10110191181736},
+      {"people": "Tom", "performance": 12.228252428237742},
+      {"people": "Dick", "performance": 12.127840032081753},
+      {"people": "Dick", "performance": 11.700236567401351},
+      {"people": "Harry", "performance": 12.93335599847373},
+      {"people": "Harry", "performance": 12.119004537863821},
+      {"people": "Slim", "performance": 10.743747276107952},
+      {"people": "Slim", "performance": 10.47365005276286},
+      {"people": "Jim", "performance": 12.093095564217265},
+      {"people": "Jim", "performance": 12.15987000023197}
+    ]
+  },
+  "height": 150,
+  "width": 400,
+  "title": "How fast do you want to go today?",
+  "encoding": {
+    "y": {"field": "people", "type": "nominal", "title": null},
+    "x": {
+      "field": "performance",
+      "type": "quantitative",
+      "aggregate": "mean",
+      "title": "Performance"
+    }
+  },
+  "layer": [
+    {
+      "mark": "bar",
+      "encoding": {
+        "x": {
+          "field": "performance",
+          "aggregate": "mean",
+          "scale": {"domain": [0, 16]}
+        }
+      }
+    },
+    {"mark": "errorbar"},
+    {
+      "mark": {"type": "text", "align": "left", "dx": 15, "color": "blue"},
+      "encoding": {
+        "text": {"field": "performance", "aggregate": "stderr", "format": ".2f"}
+      }
+    }
+  ],
+  "config": {}
+}

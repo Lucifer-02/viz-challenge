@@ -1,0 +1,32 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "A simple bar chart with embedded data.",
+  "data": {
+    "values": [
+      {"animal_names": "Lion", "mph_speed": 50},
+      {"animal_names": "Gazelle", "mph_speed": 60},
+      {"animal_names": "Cheetah", "mph_speed": 75}
+    ]
+  },
+  "height": 200,
+  "width": 300,
+  "title": "Gelato sales by flavor",
+  "transform": [{"calculate": "datum.mph_speed * 1.6", "as": "kmh"}],
+  "encoding": {
+    "y": {"field": "kmh", "type": "quantitative", "title": null},
+    "x": {
+      "field": "animal_names",
+      "type": "nominal",
+      "title": null,
+      "axis": {"labelAngle": 0}
+    }
+  },
+  "layer": [
+    {"mark": "bar"},
+    {
+      "mark": {"type": "text", "baseline": "bottom"},
+      "encoding": {"text": {"field": "kmh", "format": ".2f"}}
+    }
+  ],
+  "config": {}
+}

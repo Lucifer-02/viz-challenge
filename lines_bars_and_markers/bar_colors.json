@@ -1,0 +1,27 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "A simple bar chart with embedded data.",
+  "data": {
+    "values": [
+      {"fruits": "apple", "counts": 40, "color": "red"},
+      {"fruits": "blueberry", "counts": 100, "color": "blue"},
+      {"fruits": "cherry", "counts": 30, "color": "red"},
+      {"fruits": "orange", "counts": 55, "color": "orange"}
+    ]
+  },
+  "mark": {"type": "bar", "width": {"band": 0.7}},
+  "encoding": {
+    "x": {
+      "field": "fruits",
+      "type": "ordinal",
+      "axis": {"labelAngle": 0},
+      "title": null
+    },
+    "y": {"field": "counts", "type": "quantitative", "title": "fruit supply"},
+    "color": {"field": "color"}
+  },
+  "height": 300,
+  "width": 500,
+  "title": "Fruit supply by kind and color",
+  "config": {}
+}

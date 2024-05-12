@@ -1,0 +1,35 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Number of penguins with above average body mass",
+  "data": {
+    "values": [
+      {"species": "Adelie", "group": "Below", "count": 70},
+      {"species": "Adelie", "group": "Above", "count": 82},
+      {"species": "Chinstrap", "group": "Below", "count": 31},
+      {"species": "Chinstrap", "group": "Above", "count": 37},
+      {"species": "Gentoo", "group": "Below", "count": 58},
+      {"species": "Gentoo", "group": "Above", "count": 66}
+    ]
+  },
+  "height": 300,
+  "width": 200,
+  "transform": [{"calculate": "datum.species + ' ' + 'mu='", "as": "abc"}],
+  "encoding": {
+    "x": {
+      "field": "abc",
+      "type": "ordinal",
+      "axis": {"labelAngle": 0},
+      "title": null
+    },
+    "y": {
+      "field": "count",
+      "type": "quantitative",
+      "title": "Number of Penguins",
+      "stack": "zero",
+      "axis": {}
+    },
+    "color": {"field": "group", "type": "nominal", "title": "Group"}
+  },
+  "layer": [{"mark": "bar"}],
+  "config": {}
+}

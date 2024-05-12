@@ -1,0 +1,40 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "A simple bar chart with embedded data.",
+  "data": {
+    "values": [
+      {"Species": "Adelie", "Sex": "Male", "Count": 73},
+      {"Species": "Chinstrap", "Sex": "Male", "Count": 34},
+      {"Species": "Gentoo", "Sex": "Male", "Count": 61},
+      {"Species": "Adelie", "Sex": "Female", "Count": 73},
+      {"Species": "Chinstrap", "Sex": "Female", "Count": 34},
+      {"Species": "Gentoo", "Sex": "Female", "Count": 58}
+    ]
+  },
+  "height": 300,
+  "width": 200,
+  "title": "Number of penguins by sex",
+  "encoding": {
+    "x": {
+      "field": "Species",
+      "type": "nominal",
+      "axis": {"labelAngle": 0},
+      "title": null
+    },
+    "y": {
+      "field": "Count",
+      "type": "quantitative",
+      "stack": "zero",
+      "title": null
+    },
+    "color": {"field": "Sex"}
+  },
+  "layer": [
+    {"mark": "bar"},
+    {
+      "mark": {"type": "text", "size": 15, "dy": 15},
+      "encoding": {"text": {"field": "Count"}, "color": {"value": "white"}}
+    }
+  ],
+  "config": {}
+}
